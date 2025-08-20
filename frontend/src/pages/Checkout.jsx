@@ -4,7 +4,8 @@ import { createOrder, resetLastCreated } from "../store/slices/orderSlice";
 import { fetchCart } from "../store/slices/cartSlice";
 import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
-import API from "../utils/axios"; // axios wrapper
+import API from "../utils/axios";
+import { toast } from "react-toastify"
 
 export default function Checkout() {
     const dispatch = useDispatch();
@@ -55,6 +56,7 @@ export default function Checkout() {
         }
         await dispatch(createOrder(addressToUse));
         dispatch(fetchCart())
+        toast.success("Order placed successfully!");
     };
 
     if (loading) return <Loader label="Placing order..." />;
