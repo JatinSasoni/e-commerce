@@ -1,0 +1,104 @@
+[{
+  "_id": {
+    "$oid": "68a48d33f9fc4aae51cdcdf6"
+  },
+  "name": "Wireless Bluetooth Headphones",
+  "description": "Over-ear wireless Bluetooth headphones with noise cancellation and 30-hour battery life.",
+  "price": 2499,
+  "category": "Electronics",
+  "image": "https://example.com/images/headphones.jpg",
+  "stock": 50,
+  "rating": 4.5,
+  "numReviews": 120
+},
+{
+  "_id": {
+    "$oid": "68a48d33f9fc4aae51cdcdf7"
+  },
+  "name": "Running Shoes",
+  "description": "Lightweight running shoes designed for maximum comfort and durability.",
+  "price": 3299,
+  "category": "Footwear",
+  "image": "https://example.com/images/shoes.jpg",
+  "stock": 80,
+  "rating": 4.2,
+  "numReviews": 87
+},
+{
+  "_id": {
+    "$oid": "68a48d33f9fc4aae51cdcdf8"
+  },
+  "name": "Smartphone Stand",
+  "description": "Adjustable smartphone stand with anti-slip base, perfect for desks and video calls.",
+  "price": 499,
+  "category": "Accessories",
+  "image": "https://example.com/images/stand.jpg",
+  "stock": 200,
+  "rating": 4.7,
+  "numReviews": 45
+},
+{
+  "_id": {
+    "$oid": "68a48d33f9fc4aae51cdcdf9"
+  },
+  "name": "Gaming Mouse",
+  "description": "Ergonomic gaming mouse with customizable DPI settings and RGB lighting.",
+  "price": 1599,
+  "category": "Electronics",
+  "image": "https://example.com/images/mouse.jpg",
+  "stock": 120,
+  "rating": 4.6,
+  "numReviews": 210
+},
+{
+  "_id": {
+    "$oid": "68a48d33f9fc4aae51cdcdfa"
+  },
+  "name": "Water Bottle (1L)",
+  "description": "Reusable stainless steel water bottle with double-wall insulation.",
+  "price": 899,
+  "category": "Home & Kitchen",
+  "image": "https://example.com/images/bottle.jpg",
+  "stock": 300,
+  "rating": 4.8,
+  "numReviews": 350
+},
+{
+  "_id": {
+    "$oid": "68a48d33f9fc4aae51cdcdfb"
+  },
+  "name": "Backpack",
+  "description": "Durable waterproof backpack with multiple compartments, suitable for travel and school.",
+  "price": 1999,
+  "category": "Accessories",
+  "image": "https://example.com/images/backpack.jpg",
+  "stock": 150,
+  "rating": 4.3,
+  "numReviews": 65
+},
+{
+  "_id": {
+    "$oid": "68a48d33f9fc4aae51cdcdfc"
+  },
+  "name": "LED Desk Lamp",
+  "description": "Adjustable LED desk lamp with touch control and USB charging port.",
+  "price": 1299,
+  "category": "Home & Kitchen",
+  "image": "https://example.com/images/lamp.jpg",
+  "stock": 90,
+  "rating": 4.6,
+  "numReviews": 110
+},
+{
+  "_id": {
+    "$oid": "68a48d33f9fc4aae51cdcdfd"
+  },
+  "name": "Cotton T-Shirt",
+  "description": "100% cotton unisex t-shirt, available in multiple colors and sizes.",
+  "price": 599,
+  "category": "Clothing",
+  "image": "https://example.com/images/tshirt.jpg",
+  "stock": 500,
+  "rating": 4.4,
+  "numReviews": 220
+}]
