@@ -3,7 +3,7 @@ export default function Footer() {
         <footer className="border-t bg-white mt-10">
             <div className="container py-8 text-sm text-zinc-600 flex flex-col sm:flex-row items-center justify-between">
                 <p>© {new Date().getFullYear()} eStore. All rights reserved.</p>
-                <p className="mt-2 sm:mt-0">Built with React + Redux Toolkit + TailwindCSS</p>
+                <p className="mt-2 sm:mt-0">Assignment by Jatin</p>
             </div>
         </footer>
     );
