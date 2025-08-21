@@ -25,14 +25,13 @@ export default function Login() {
             } else {
                 const err = res.payload;
                 if (err?.resend) {
-                    // Save email for Verify OTP page
                     navigate("/verify-otp", { state: { email } });
                 } else {
-                    console.log(error);
                     toast.error(err?.message || "Login failed");
                 }
             }
         } catch (error) {
+
             toast.error(error.message || "Something went wrong. Try again.");
         }
     };

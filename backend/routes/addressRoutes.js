@@ -4,6 +4,8 @@ import {
   addAdders,
   fetchAdders,
 } from "../controllers/addressRoutes.controller.js";
+import { addressValidator } from "../validators/addressValidator.js";
+import { validate } from "../middleware/validate.js";
 
 // JWT middleware
 const router = express.Router();
@@ -12,6 +14,6 @@ const router = express.Router();
 router.get("/", auth, fetchAdders);
 
 //  Add a new address
-router.post("/", auth, addAdders);
+router.post("/", auth, addressValidator, validate, addAdders);
 
 export default router;

@@ -11,11 +11,6 @@ const generateOTP = () => {
 };
 export const registerUser = async (req, res) => {
   try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
     const { name, email, password } = req.body;
 
     // Check if user already exists
@@ -63,11 +58,6 @@ export const registerUser = async (req, res) => {
 
 export const verifyOtp = async (req, res) => {
   try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
     const { email, otp } = req.body;
 
     const user = await User.findOne({
@@ -109,11 +99,6 @@ export const verifyOtp = async (req, res) => {
 
 export const loginUser = async (req, res) => {
   try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });

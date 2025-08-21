@@ -51,7 +51,7 @@ export default function VerifyOtp() {
                 <form onSubmit={submit} className="space-y-3">
                     <input className="input" type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
                     <input className="input" placeholder="6-digit OTP" value={otp} onChange={e => setOtp(e.target.value)} required minLength={6} maxLength={6} />
-                    {msg && <p className="text-sm text-zinc-600">{msg}</p>}
+                    {msg && <p className="text-sm text-red-600">{msg}</p>}
                     <button className="btn btn-primary w-full" disabled={loading}>{loading ? "..." : "Verify"}</button>
                 </form>
                 <button onClick={resend} className="btn w-full mt-2" disabled={loading}>Resend OTP</button>
