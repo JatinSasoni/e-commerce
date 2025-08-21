@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, fetchProfile } from "../store/slices/authSlice";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function Login() {
@@ -10,8 +10,6 @@ export default function Login() {
     const { loading, error } = useSelector((s) => s.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
 
 
     const submit = async (e) => {
@@ -21,7 +19,7 @@ export default function Login() {
 
             if (res.meta.requestStatus === "fulfilled") {
                 await dispatch(fetchProfile());
-                navigate(from, { replace: true });
+                navigate("/");
                 toast.success("Welcome to eStore");
 
             } else {

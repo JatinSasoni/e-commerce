@@ -11,8 +11,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import VerifyOtp from "./pages/VerifyOtp";
 import Profile from "./pages/Profile";
-import Protected from "./components/Protected";
-
+import Protected from "./components/Protected"
 
 export default function App() {
   return (
@@ -21,7 +20,6 @@ export default function App() {
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/products" element={<Home />} /> */}
           <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
 

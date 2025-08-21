@@ -53,7 +53,6 @@ const sendRandomUserEmail = async () => {
 
 console.log("RandomEmail Generator Initialized");
 
-// Schedule: every 1 minute
 cron.schedule("* * * * *", sendRandomUserEmail);
 
 export default sendRandomUserEmail;

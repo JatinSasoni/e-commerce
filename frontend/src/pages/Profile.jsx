@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProfile } from "../store/slices/authSlice";
 import Loader from "../components/Loader";
+import { ShieldCheck, Mail, UserRound } from 'lucide-react';
+
 
 export default function Profile() {
     const dispatch = useDispatch();
@@ -24,14 +26,16 @@ export default function Profile() {
                     <div className="space-y-5">
                         {/* Basic Info */}
                         <div className="space-y-2">
-                            <p className="text-gray-700 ">
-                                <span className="font-semibold">👤 Name:</span> {user.name}
+                            <p className="text-gray-700 flex gap-1 ">
+                                <span className="font-semibold flex gap-1"> <UserRound />:</span> {user.name}
                             </p>
-                            <p className="text-gray-700 ">
-                                <span className="font-semibold">📧 Email:</span> {user.email}
+                            <p className="text-gray-700 flex gap-1">
+                                <span className="font-semibold flex gap-1"><Mail />:</span> {user.email}
                             </p>
-                            <p className="text-gray-700 ">
-                                <span className="font-semibold">✅ Verified:</span>{" "}
+                            <p className="text-gray-700 flex gap-1">
+                                <span className="font-semibold flex gap-1">
+                                    <ShieldCheck />
+                                    Verified:</span>{" "}
                                 <span
                                     className={`${user.isVerified ? "text-green-600" : "text-red-500"
                                         } font-medium`}

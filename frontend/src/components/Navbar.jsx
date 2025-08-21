@@ -28,30 +28,76 @@ export default function Navbar() {
     };
 
 
+
     return (
-        <header className="sticky top-0 z-50 bg-white border-b">
-            <div className="container h-16 flex items-center justify-between">
-                <Link to="/" className="font-extrabold text-xl">eStore</Link>
-                <nav className="flex items-center gap-4">
-                    <NavLink to="/products" className="hover:underline">Products</NavLink>
-                    <NavLink to="/cart" className="hover:underline">Cart ({count})</NavLink>
+        <header className="sticky top-0 z-50 bg-white border-b shadow-sm">
+            <div className="container mx-auto h-18 flex items-center sm:justify-between px-4 max-sm:flex-col ">
+                {/* Logo */}
+                <Link to="/" className="font-bold text-xl text-gray-900 s">
+                    eStore
+                </Link>
+
+                {/* Navigation */}
+                <nav className="flex items-center gap-4 text-gray-700">
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            `${isActive ? "text-blue-600 font-medium" : "hover:text-blue-500"} transition-colors max-sm:hidden`
+                        }
+                    >
+                        Products
+                    </NavLink>
+
+                    <NavLink
+                        to="/cart"
+                        className={({ isActive }) => isActive ? "text-blue-600 font-medium" : "hover:text-blue-500 transition-colors"}
+                    >
+                        Cart ({count})
+                    </NavLink>
+
                     {user ? (
                         <div className="flex items-center gap-3">
-                            <NavLink to="/orders" className="hover:underline">My Orders</NavLink>
-                            <NavLink to="/profile" className="hover:underline">{user.name?.split(" ")[0]}</NavLink>
+                            <NavLink
+                                to="/orders"
+                                className={({ isActive }) => isActive ? "text-blue-600 font-medium" : "hover:text-blue-500 transition-colors"}
+                            >
+                                My Orders
+                            </NavLink>
+                            <NavLink
+                                to="/profile"
+                                className={({ isActive }) => isActive ? "text-blue-600 font-medium" : "hover:text-blue-500 transition-colors"}
+                            >
+                                <div className="size-8 rounded-full overflow-hidden bg-blue-400 ">
+                                    <img src="/default-pfp.png" alt="profile-picture" className="w-full h-full" />
+                                </div>
+                            </NavLink>
                             <button
                                 onClick={handleLogout}
-                                className="btn"
-                            >Logout</button>
+                                className="px-3 py-1 border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white transition-colors"
+                            >
+                                Logout
+                            </button>
                         </div>
                     ) : (
                         <>
-                            <NavLink to="/login" className="btn">Login</NavLink>
-                            <NavLink to="/register" className="btn btn-primary">Register</NavLink>
+                            <NavLink
+                                to="/login"
+                                className="px-3 py-1 border border-gray-500 text-gray-700 rounded hover:bg-gray-200 transition-colors"
+                            >
+                                Login
+                            </NavLink>
+                            <NavLink
+                                to="/register"
+                                className="px-3 py-1 border border-blue-600 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+                            >
+                                Register
+                            </NavLink>
                         </>
                     )}
                 </nav>
             </div>
-        </header>
+        </header >
+
+
     );
 }

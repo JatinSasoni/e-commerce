@@ -24,6 +24,7 @@ export default function Cart() {
 
             {items?.length === 0 ? (
                 <div className="card p-6 text-center">
+                    <img src="/empty-cart.png" alt="Empty Cart" className="size-60 mx-auto" />
                     <p className="text-zinc-600">Cart is empty.</p>
                     <Link to="/" className="btn btn-primary mt-4">Browse products</Link>
                 </div>

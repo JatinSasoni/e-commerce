@@ -19,9 +19,8 @@ export default function Checkout() {
     const [newAddress, setNewAddress] = useState({
         street: "", city: "", state: "", zipCode: "", country: "",
     });
-    const [mode, setMode] = useState("saved"); // "saved" | "new"
+    const [mode, setMode] = useState("saved");
 
-    // fetch cart + addresses
     useEffect(() => {
         dispatch(fetchCart());
 
@@ -34,7 +33,6 @@ export default function Checkout() {
         fetchAddresses();
     }, [dispatch, user]);
 
-    // after order placed
     useEffect(() => {
         if (lastCreated) {
             const id = lastCreated.id || lastCreated._id;
@@ -49,14 +47,18 @@ export default function Checkout() {
         let addressToUse = mode === "saved" ? selectedAddress : newAddress;
 
         if (mode === "new") {
-            // Save new address first
             const res = await API.post("/addresses", newAddress);
-            addressToUse = res.data; // backend returns the new address
+            addressToUse = res.data;
             setAddresses((prev) => [...prev, res.data]);
         }
-        await dispatch(createOrder(addressToUse));
+        const res = await dispatch(createOrder(addressToUse));
         dispatch(fetchCart())
-        toast.success("Order placed successfully!");
+        if (res.meta.requestStatus === "fulfilled") {
+            toast.success("Order placed successfully!");
+        } else if (res.meta.requestStatus === "rejected") {
+            const errorMessage = res.payload?.message || "Something went wrong";
+            toast.error(errorMessage);
+        }
     };
 
     if (loading) return <Loader label="Placing order..." />;

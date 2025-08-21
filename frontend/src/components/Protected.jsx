@@ -1,11 +1,19 @@
-import { Navigate, Outlet, useLocation } from "react-router-dom";
-// import { useSelector } from "react-redux";
+import { jwtDecode } from "jwt-decode";
+import { Navigate, Outlet } from "react-router-dom";
 
-export default function Protected() {
-    const token = localStorage.getItem("token") || null;
-    // const { user } = useSelector((s) => s.auth);
-    const location = useLocation();
+const Protected = () => {
+    const token = localStorage.getItem("token");
+    if (!token) return <Navigate to="/login" />;
 
-    if (!token) return <Navigate to="/login" state={{ from: location }} />;
-    return <Outlet />;
+    try {
+        const decoded = jwtDecode(token);
+        if (decoded.exp * 1000 < Date.now()) {
+            localStorage.removeItem("token");
+            return <Navigate to="/login" />;
+        }
+        return <Outlet />;
+    } catch {
+        return <Navigate to="/login" />;
+    }
 }
+export default Protected;
