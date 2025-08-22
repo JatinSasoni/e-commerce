@@ -2,7 +2,8 @@ import { Product } from "../models/Product.js";
 import { sendOrderConfirmationEmail } from "../utils/email.js";
 import { Order } from "../models/Order.js";
 import { Cart } from "../models/Cart.js";
-// Generate order number
+
+//* Generate order number
 const generateOrderNumber = () => {
   const timestamp = Date.now().toString();
   const random = Math.random().toString(36).substring(2, 5).toUpperCase();
@@ -34,7 +35,7 @@ export const createOrder = async (req, res) => {
       return res.status(400).json({ message: "Cart is empty" });
     }
 
-    // Check stock availability
+    //* Check stock availability
     for (const item of cart.items) {
       if (item.product.stock < item.quantity) {
         return res.status(400).json({
@@ -43,19 +44,19 @@ export const createOrder = async (req, res) => {
       }
     }
 
-    // Create order items
+    //* Create order items
     const orderItems = cart.items.map((item) => ({
       product: item.product._id,
       quantity: item.quantity,
       price: item.product.price,
     }));
 
-    // Calculate total
+    //* Calculate total
     const totalAmount = cart.items.reduce((total, item) => {
       return total + item.product.price * item.quantity;
     }, 0);
 
-    // Create order
+    //* Create order
     const order = new Order({
       user: req.user._id,
       items: orderItems,
@@ -67,7 +68,7 @@ export const createOrder = async (req, res) => {
     await order.save();
     await order.populate("items.product");
 
-    // Update product stock
+    //* Update product stock
     for (const item of cart.items) {
       await Product.findByIdAndUpdate(item.product._id, {
         $inc: { stock: -item.quantity },

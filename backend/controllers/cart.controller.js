@@ -12,7 +12,7 @@ export const getCartProducts = async (req, res) => {
       await cart.save();
     }
 
-    // Calculate total amount
+    //* total amount
     const totalAmount = cart.items.reduce((total, item) => {
       return total + item.product.price * item.quantity;
     }, 0);
@@ -63,7 +63,7 @@ export const addItemInCart = async (req, res) => {
     await cart.save();
     await cart.populate("items.product");
 
-    // Calculate total amount
+    //* Calculate total amount
     const totalAmount = cart.items.reduce((total, item) => {
       return total + item.product.price * item.quantity;
     }, 0);

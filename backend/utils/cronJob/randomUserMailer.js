@@ -1,3 +1,4 @@
+import "dotenv/config";
 import cron from "node-cron";
 import nodemailer from "nodemailer";
 import { Product } from "../../models/Product.js";
@@ -35,7 +36,6 @@ const sendRandomUserEmail = async () => {
       <p>Visit our store to explore more products!</p>
     `;
 
-    // 4. Send email
     await transporter.sendMail({
       from: `"eStore" <${process.env.EMAIL_USER}>`,
       to: user.email,
@@ -46,7 +46,6 @@ const sendRandomUserEmail = async () => {
     console.log(` Email sent to random user: ${user.email}`);
   } catch (err) {
     console.log(err);
-
     console.error(" Error sending email:", err.message);
   }
 };

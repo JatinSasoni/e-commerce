@@ -14,7 +14,7 @@ export const sendOTPEmail = async (email, otp, name) => {
   const transporter = createTransporter();
 
   const mailOptions = {
-    from: "mnprt998877@gmail.com",
+    from: "jatin6284288651@gmail.com",
     to: email,
     subject: "Email Verification - Your OTP Code",
     html: `

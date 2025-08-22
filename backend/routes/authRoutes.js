@@ -1,5 +1,4 @@
 import express from "express";
-import { body } from "express-validator";
 import { auth } from "../middleware/auth.js";
 import {
   loginUser,
@@ -15,21 +14,22 @@ import {
   verifyOtpValidator,
 } from "../validators/authValidator.js";
 import { validate } from "../middleware/validate.js";
+
 const router = express.Router();
 
-// Register user
+//* Register user
 router.post("/register", registerValidator, validate, registerUser);
 
-// Verify OTP
+//* Verify OTP
 router.post("/verify-otp", verifyOtpValidator, validate, verifyOtp);
 
-// Login user
+//* Login user
 router.post("/login", loginValidator, validate, loginUser);
 
-// Get user profile
+//* Get user profile
 router.get("/profile", auth, profileController);
 
-// Resend OTP
+//* Resend OTP
 router.post("/resend-otp", resendOtpValidator, validate, optResendController);
 
 export default router;

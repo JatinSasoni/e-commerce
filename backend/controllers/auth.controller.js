@@ -1,29 +1,28 @@
 import jwt from "jsonwebtoken";
 import { User } from "../models/User.js";
-import { validationResult } from "express-validator";
 import crypto from "crypto";
 import { sendOTPEmail } from "../utils/email.js";
-//register user
 
 // Generate OTP
 const generateOTP = () => {
   return crypto.randomInt(100000, 999999).toString();
 };
+
 export const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    // Check if user already exists
+    //* Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
 
-    // Generate OTP
+    //* Generate OTP
     const otp = generateOTP();
-    const otpExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
+    const otpExpires = new Date(Date.now() + 10 * 60 * 1000);
 
-    // Create user
+    //* Create user
     const user = new User({
       name,
       email,
@@ -34,7 +33,7 @@ export const registerUser = async (req, res) => {
 
     await user.save();
 
-    // Send OTP email
+    //* Send OTP email
     try {
       await sendOTPEmail(email, otp, name);
       res.status(201).json({
@@ -107,7 +106,7 @@ export const loginUser = async (req, res) => {
     }
 
     if (!user.isVerified) {
-      // re-generate OTP and send email
+      //* re-generate OTP and send email
       const otp = generateOTP();
       user.otp = otp;
       user.otpExpires = new Date(Date.now() + 10 * 60 * 1000);
@@ -147,6 +146,7 @@ export const loginUser = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
 export const profileController = async (req, res) => {
   try {
     res.json({

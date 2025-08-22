@@ -5,8 +5,6 @@ import {
   getOrderById,
   myOrder,
 } from "../controllers/order.controller.js";
-import { addressValidator } from "../validators/addressValidator.js";
-import { validate } from "../middleware/validate.js";
 
 const router = express.Router();
 

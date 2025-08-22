@@ -21,7 +21,6 @@ export const addAdders = async (req, res) => {
     user.address.push({ street, city, state, zipCode, country });
     await user.save();
 
-    // return only the newly added address (last element)
     res.status(201).json(user.address[user.address.length - 1]);
   } catch (err) {
     console.error("Add address error:", err);
